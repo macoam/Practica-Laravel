@@ -17,26 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('notas/{id}/detalles', function ($id) {
-    return 'Aqui se muestran los detalles de la nota: ' .$id;
-});
+Route::get('notas', function (){
+    $notas = DB::table('notas')->get();
 
-Route::get('notas/crear', function () {
-    return 'Aqui se crea una nueva nota';
-});
+    return view('notas', ['notas' => $notas]);
+})->name('notas.index');
 
-Route::get('notas/listar', function () {
-    return 'Aqui se listan las notas';
-});
-
-Route::get('notas/editar', function () {
-    return 'Aqui se editan las notas';
-});
-
-Route::get('notas', function () {
-    return view('notas');
-});
-
-Route::get('agregar', function () {
+Route::get('agregar', function (){
     return view('agregar');
 });
+
+Route::get('notas/{id}/editar', function ($id){
+    $notas = DB::table('notas')
+        ->where('id',$id)
+        ->first();
+
+    return 'Aqui se van a editar las notas' .$id;
+})->name('notas.edit');

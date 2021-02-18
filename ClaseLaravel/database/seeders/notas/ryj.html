@@ -1,0 +1,35 @@
+<div class="card card-big">
+    <div class="card-body">
+        <h4>Rutas y JSON</h4>
+
+        <p>
+            Recuerda que si retornas un arreglo en una ruta, Laravel lo va a convertir en JSON automáticamente:
+        </p>
+
+        <pre>
+&lt;?php
+
+Route::get('/', function () {
+return [
+'Cursos' => [
+'Primeros pasos con Laravel',
+'Crea un panel de control con Laravel',
+]
+];
+});
+</pre>
+
+        <p>Producirá el siguiente resultado:</p>
+
+        <code>{"Cursos":["Primeros pasos con Laravel","Crea un panel de control con Laravel"]}</code>
+    </div>
+
+    <footer class="card-footer">
+        <a class="action-link action-edit">
+            <i class="icon icon-pen"></i>
+        </a>
+        <a class="action-link action-delete">
+            <i class="icon icon-trash"></i>
+        </a>
+    </footer>
+</div>
