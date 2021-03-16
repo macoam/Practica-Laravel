@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Notas;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Notas;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,16 @@ Route::get('notas', function() {
 Route::get('agregar', function() {
     return view('agregar');
 });
+
+Route::post('crear', function(Request $reques){
+    Notas::create([
+        'titulo' => $reques->input('title'),
+        'contenido' => $reques->input('content'),
+    ]);
+
+    return redirect('/notas');
+
+})->name('notas.store');
 
 Route::get('notas/{id}/editar', function ($id){
     $notas = Notas::find($id); //DB::table('notas')->where('id', $id)->first();
