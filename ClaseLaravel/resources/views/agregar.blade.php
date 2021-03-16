@@ -1,4 +1,5 @@
 @extends('layout')
+        
         @section('content')
         <main class="content">
             <div class="cards">
@@ -6,10 +7,11 @@
                     <div class="card-body">
                         <h1>Nueva nota</h1>
 
-                        <form method="POST" action="{{ url('crear') }}">
+                        <form method="POST" action="{{url('crear')}}">
                             @csrf
                             <label for="title" class="field-label">Título: </label>
                             <input type="text" name="title" id="title" class="field-input">
+
                             <label for="content" class="field-label">Contenido:</label>
                             <textarea name="content" id="content" rows="10" class="field-textarea"></textarea>
 
@@ -19,5 +21,4 @@
                 </div>
             </div>
         </main>
-
         @endsection
